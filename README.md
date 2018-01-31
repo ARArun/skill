@@ -9,7 +9,7 @@
 5. Gripper
 6. Camera
 ----
-## Every robot has a minimum power
+## Every robot has a limited power (battery). There are also charging stations.
 ----
 ## Different types of robots and the skills they possess.
 
