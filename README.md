@@ -12,7 +12,7 @@
 ## Different types of robots and the skills they possess.
 
 ### Robot[1]
-Skill sets = <s1 >
+Skill sets = <s1, s6> (communication and camera) - a perfect spotter
 ### Robot[2]
 Skill sets = <s1, s2>
 ### Robot[3]
