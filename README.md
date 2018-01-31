@@ -9,12 +9,14 @@
 5. Gripper
 6. Camera
 ----
+## Every robot has a minimum power
+----
 ## Different types of robots and the skills they possess.
 
 ### Robot[1]
 Skill sets = <s1, s6> (communication and camera) - a perfect spotter
 ### Robot[2]
-Skill sets = <s1, s2>
+Skill sets = <s1, s2> ()
 ### Robot[3]
 Skill sets = <s1, s2, s4>
 ### Robot[4]
