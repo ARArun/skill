@@ -19,6 +19,8 @@ function step()
 
     if state == "search" then
         search()
+    elseif state == "to_charge" then
+        to_charge()
     end
 
 end
@@ -46,7 +48,7 @@ end
 -----------------------------function search()----------------------------------
 --------------------------------------------------------------------------------
 function search()
-    bat_cur = bat_cur - 100 
+    bat_cur = bat_cur - 10
     sensingLeft =     robot.proximity[3].value +
                       robot.proximity[4].value +
                       robot.proximity[5].value +
@@ -60,12 +62,25 @@ function search()
                       robot.proximity[22].value +
                       robot.proximity[24].value +
                       robot.proximity[23].value
+    if bat_cur <= (70/100) * bat_total then
+        state = "to_charge"
+    end
     if sensingLeft ~= 0 then
           robot.wheels.set_velocity(7,3)
     elseif sensingRight ~= 0 then
           robot.wheels.set_velocity(3,7)
     else
           robot.wheels.set_velocity(10,10)
+    end
+end
+--------------------------------------------------------------------------------
+--------------------------function to_charge()----------------------------------
+--------------------------------------------------------------------------------
+function to_charge()
+    robot.wheels.set_velocity(0,0)
+    bat_cur = bat_cur + 10
+    if bat_cur >= (90/100)*bat_total then
+        state = "search"
     end
 end
 --------------------------------------------------------------------------------
