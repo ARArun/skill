@@ -14,13 +14,13 @@
 ## Different types of robots and the skills they possess.
 
 ### Robot[1]
-Skill sets = <s1, s6> (communication and camera) - a perfect spotter
+Skill sets = <s1, s6> (Communication and Camera) - a perfect spotter
 ### Robot[2]
-Skill sets = <s1, s2> ()
+Skill sets = <s1, s4> (Communication and Pushing power ) - work horse
 ### Robot[3]
-Skill sets = <s1, s2, s4>
+Skill sets = <s1, s4, s5> (Communication, Pushing power, Gripper) - Specific worker
 ### Robot[4]
-Skill sets = <s1, s2, s3, s4, s5, s6>
+Skill sets = <s1, s2, s3, s4, s5, s6> (All round performance)
 
 ## Different types of tasks require different types of skills.
 <center>
