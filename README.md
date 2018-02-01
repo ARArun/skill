@@ -4,7 +4,7 @@
 
 1. Communication
 2. Laser Light
-3. Odometer
+3. Odometery
 4. Pushing power
 5. Gripper
 6. Camera
@@ -22,9 +22,22 @@ Skill sets = <s1, s4, s5> (Communication, Pushing power, Gripper) - Specific wor
 ### 4. Robot
 Skill sets = <s1, s2, s3, s4, s5, s6> (All round performance)
 
-## Different types of tasks require different types of skills.
-
 ## Types of tasks
+<center>
+There are different tasks to be accomplished by the heterogenous systems. The objects available in the arena are given below
+1. Wooden table
+2. Wooden log
+3. Glass table
+4. Almirah
+
+To move each of the above mentioned items in their required place we need robots with different types of skills. Thus the heterogenous system mentioned above will come handy
+</center> 
+### 1. Task
+
+requires s3 alone
+
+
+Require
 
 <center>
 A robot with camera and Communication skill can spot these tasks and discover the skills required for completing the found tasks and calls robots with required robots to complete the tasks. Instead of using all the robots with all their skills we can use robots with simple camera and communication to do the job.</center>
