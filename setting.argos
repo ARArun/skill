@@ -30,7 +30,7 @@
                 <footbot_proximity implementation="default" show_rays="false"/>
                 <range_and_bearing implementation ="medium" medium="rab" show_rays="true"/>
             </sensors>
-            <params script="controller_1.lua"/>
+            <params script="spotter.lua"/>
         </lua_controller>
 
         <lua_controller id="type_2">
@@ -46,7 +46,7 @@
                 <footbot_proximity implementation="default" show_rays="false"/>
                 <range_and_bearing implementation ="medium" medium="rab" show_rays="true"/>
             </sensors>
-            <params script="controller_2.lua"/>
+            <params script="pusher.lua"/>
         </lua_controller>
 
         <lua_controller id="type_3">
@@ -64,7 +64,7 @@
                 <footbot_proximity implementation="default" show_rays="false"/>
                 <range_and_bearing implementation ="medium" medium="rab" show_rays="true"/>
             </sensors>
-            <params script="controller_3.lua"/>
+            <params script="gripper.lua"/>
         </lua_controller>
 
         <lua_controller id="type_4">
@@ -84,7 +84,7 @@
                 <footbot_proximity implementation="default" show_rays="false" />
                 <range_and_bearing implementation="medium" medium="rab" show_rays="true" />
             </sensors>
-            <params script="controller_4.lua" />
+            <params script="all_rounder.lua" />
         </lua_controller>
 
     </controllers>
@@ -92,7 +92,7 @@
     <!-- *********************** -->
     <!-- * Arena configuration * -->
     <!-- *********************** -->
-    <arena size="10, 10, 2" center="0, 0, 1">
+    <arena size="10, 10, 5" center="0, 0, 1">
         <!--Floor design-->
         <floor id="f" source="image" path="charging_dock.png" />
 
@@ -156,12 +156,12 @@
 
 <!----------------------------------------------------------------------------->
 
-        <!-- Big Obstacles -->
+        <!-- Glass Ware -->
         <distribute>
-          <position method="uniform" min="-4,-1.25,0" max="4,1.25,0" />
+          <position method="uniform" min="-4,-4,0" max="4,4,0" />
           <orientation method="uniform" min="0,0,0" max="0,0,0" />
-          <entity quantity="6" max_trials="100">
-              <cylinder id="cyl1" radius="0.2" height="0.1"
+          <entity quantity="2" max_trials="100">
+              <cylinder id="Glass_ware" radius="0.2" height="0.1"
                             movable="true" mass="2.5">
                     <leds medium="leds">
                     <led offset=" 0,0,0.1" anchor="origin" color="blue" />
@@ -170,20 +170,36 @@
           </entity>
         </distribute>
 
-        <!-- small Obstacles -->
+        <!-- Wood Log -->
         <distribute>
-          <position method="uniform" min="-4,-1.25,0" max="4,1.25,0" />
-          <orientation method="uniform" min="0,0,0" max="0,0,0" />
-          <entity quantity="8" max_trials="100">
-              <cylinder id="cyl2" radius="0.1" height="0.1"
+          <position method="uniform" min="-4,-4,0" max="4,4,0" />
+          <orientation method="uniform" min="0,0,90" max="0,0,90" />
+          <entity quantity="3" max_trials="100">
+              <cylinder id="log" radius="0.1" height="0.3"
                             movable="true" mass="2.5">
-                    <leds medium="leds">
-                    <led offset=" 0,0,0.1" anchor="origin" color="red" />
-                  </leds>
+                <leds medium="leds">
+                    <led offset="0,0,-0.15" anchor="origin" color="blue" />
+                    <led offset="0,0,0.15" anchor="origin" color="blue" />
+                </leds>
               </cylinder>
           </entity>
         </distribute>
 
+        <!-- Almirah -->
+        <distribute>
+            <position method="uniform" min="-4,-4,0" max="4,4,0" />
+            <orientation method="uniform" min="0,0,0" max="0,0,0"/>
+            <entity quantity="3" max_trials="100">
+                <box id="Almirah" size="0.25,0.25,0.75" movable="true" mass="5">
+                  <leds medium="leds">
+                    <led offset=" 0, -0.05,0" anchor="origin" color="red" />
+                    <led offset="0, 0.05,0"    anchor="origin" color="red" />
+                    <led offset=" 0.05, 0,0"    anchor="origin" color="red" />
+                    <led offset=" -0.05,0,0"    anchor="origin" color="red" />
+                  </leds>
+              </box>
+            </entity>
+        </distribute>
 
     </arena>
 
