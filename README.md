@@ -23,6 +23,9 @@ Skill sets = <s1, s4, s5> (Communication, Pushing power, Gripper) - Specific wor
 Skill sets = <s1, s2, s3, s4, s5, s6> (All round performance)
 
 ## Different types of tasks require different types of skills.
+
+## Types of tasks
+
 <center>
 A robot with camera and Communication skill can spot these tasks and discover the skills required for completing the found tasks and calls robots with required robots to complete the tasks. Instead of using all the robots with all their skills we can use robots with simple camera and communication to do the job.</center>
 
@@ -31,6 +34,3 @@ A robot with camera and Communication skill can spot these tasks and discover th
 <center>
 This is a simple robot with just a camera and communication devices. It spots tasks and hast to call the robots with required tasks.
 </center>
-
-
-## Different types of tasks
