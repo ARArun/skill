@@ -13,13 +13,13 @@
 ----
 ## Different types of robots and the skills they possess.
 
-### Robot[1]
+### 1. Robot
 Skill sets = <s1, s6> (Communication and Camera) - a perfect spotter
-### Robot[2]
+### 2. Robot
 Skill sets = <s1, s4> (Communication and Pushing power ) - work horse
-### Robot[3]
+### 3. Robot
 Skill sets = <s1, s4, s5> (Communication, Pushing power, Gripper) - Specific worker
-### Robot[4]
+### 4. Robot
 Skill sets = <s1, s2, s3, s4, s5, s6> (All round performance)
 
 ## Different types of tasks require different types of skills.
@@ -31,3 +31,6 @@ A robot with camera and Communication skill can spot these tasks and discover th
 <center>
 This is a simple robot with just a camera and communication devices. It spots tasks and hast to call the robots with required tasks.
 </center>
+
+
+## Different types of tasks
