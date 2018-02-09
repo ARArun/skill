@@ -5,6 +5,7 @@ function init()
     log(robot.id," = ",id)
     state = "search"
     prev_state = "dummy"
+    robot.colored_blob_omnidirectional_camera.enable()
 end
 
 function step()

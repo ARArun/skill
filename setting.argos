@@ -164,7 +164,7 @@
               <cylinder id="small_cyl" radius="0.2" height="0.1"
                             movable="true" mass="2.5">
                     <leds medium="leds">
-                    <led offset=" 0,0,0.1" anchor="origin" color="blue" />
+                    <led offset=" 0,0,0.1" anchor="origin" color="brown" />
                   </leds>
               </cylinder>
           </entity>
@@ -178,23 +178,20 @@
               <cylinder id="large_cyl" radius="0.1" height="0.1"
                             movable="true" mass="2.5">
                     <leds medium="leds">
-                    <led offset=" 0,0,0.1" anchor="origin" color="blue" />
+                    <led offset=" 0,0,0.1" anchor="origin" color="white" />
                   </leds>
               </cylinder>
           </entity>
         </distribute>
 
-        <!-- Small -->
+        <!-- Small box -->
         <distribute>
             <position method="uniform" min="-4,-4,0" max="4,4,0" />
             <orientation method="uniform" min="0,0,0" max="0,0,0"/>
             <entity quantity="3" max_trials="100">
                 <box id="small_cube" size="0.2,0.2,0.1" movable="true" mass="5">
                   <leds medium="leds">
-                    <led offset=" 0, -0.05,0" anchor="origin" color="red" />
-                    <led offset="0, 0.05,0"    anchor="origin" color="red" />
-                    <led offset=" 0.05, 0,0"    anchor="origin" color="red" />
-                    <led offset=" -0.05,0,0"    anchor="origin" color="red" />
+                    <led offset=" 0, 0,0.1" anchor="origin" color= "purple" />
                   </leds>
               </box>
             </entity>
@@ -206,10 +203,7 @@
             <entity quantity="3" max_trials="100">
                 <box id="large_cube" size="0.4,0.4,0.1" movable="true" mass="5">
                   <leds medium="leds">
-                    <led offset=" 0, -0.05,0" anchor="origin" color="red" />
-                    <led offset="0, 0.05,0"    anchor="origin" color="red" />
-                    <led offset=" 0.05, 0,0"    anchor="origin" color="red" />
-                    <led offset=" -0.05,0,0"    anchor="origin" color="red" />
+                    <led offset=" 0,0,0.1" anchor="origin" color="orange" />
                   </leds>
               </box>
             </entity>
