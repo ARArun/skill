@@ -28,7 +28,7 @@ There are different tasks to be accomplished by the heterogenous systems. The ob
 2. Wooden log
 3. Glass table
 4. Almirah
-
+ 
 To move each of the above mentioned items in their required place we need robots with different types of skills. Thus the heterogenous system mentioned above will come handy
 
 ## Spotter

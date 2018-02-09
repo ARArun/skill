@@ -8,8 +8,9 @@ function init()
 end
 
 function step()
+    --colors
     if (bat_cur/bat_total) > 0.25 then
-        robot.leds.set_all_colors(0,255,0)
+        robot.leds.set_all_colors(0,0,255)
     else
         robot.leds.set_all_colors(255,0,0)
     end
@@ -77,9 +78,14 @@ end
 --------------------------------------------------------------------------------
 --------------------------------to charge()-------------------------------------
 --------------------------------------------------------------------------------
-function to_charge()
-    if robot.positioning
-end
+--[[function to_charge()
+    if robot.positioning.position.x < 0 then -- the location we must go
+
+    elseif robot.positioning.position.x >= 0 then
+
+    end
+
+end--]]
 --------------------------------------------------------------------------------
 -----------------------------function charge()----------------------------------
 --------------------------------------------------------------------------------
