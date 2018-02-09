@@ -1,15 +1,19 @@
 bat_total = 10000
 bat_cur = 10000
 function init()
-
+    self_addr = addr(robot.id)
+    log(robot.id," = ",id)
+    state = "search"
+    prev_state = "dummy"
+    robot.colored_blob_omnidirectional_camera.enable()
 end
 
 function step()
     if (bat_cur/bat_total) > 0.25 then
             robot.leds.set_all_colors(255,255,0)
-        else
-            robot.leds.set_all_colors(255,0,0)
-        end
+    else
+        robot.leds.set_all_colors(255,0,0)
+    end
 end
 
 --------------------------------------------------------------------------------
