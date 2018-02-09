@@ -156,7 +156,7 @@
 
 <!----------------------------------------------------------------------------->
 
-        <!-- Glass Ware -->
+        <!--Large disc -->
         <distribute>
           <position method="uniform" min="-4,-4,0" max="4,4,0" />
           <orientation method="uniform" min="0,0,0" max="0,0,0" />
@@ -170,7 +170,7 @@
           </entity>
         </distribute>
 
-        <!-- Wood Log -->
+        <!-- small disc -->
         <distribute>
           <position method="uniform" min="-4,-4,0" max="4,4,0" />
           <orientation method="uniform" min="0,0,0" max="0,0,0" />
