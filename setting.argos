@@ -94,7 +94,7 @@
     <!-- *********************** -->
     <arena size="10, 10, 5" center="0, 0, 1">
         <!--Floor design-->
-        <floor id="f" source="image" path="charging_dock.png" />
+        <floor id="f" source="image" path="lef_righ.png" />
 
         <!--Adding borders-->
         <box id="bn" size="0.1, 10, 0.2" movable="false">

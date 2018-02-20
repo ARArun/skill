@@ -1,5 +1,6 @@
 bat_total = 10000
 bat_cur = 10000
+es = 0
 --------------------------------------------------------------------------------
 function init()
     self_addr = addr(robot.id)
@@ -23,6 +24,7 @@ end
 function reset()
 end
 function destroy()
+    log('Energy spent by gripper ',id,' = ',es)
 end
 --------------------------------------------------------------------------------
 ------------------------address determining function----------------------------
@@ -40,6 +42,7 @@ end
 --------------------------------------------------------------------------------
 function search()
     bat_cur = bat_cur - 10
+    es = es + 10
     sensingLeft =     robot.proximity[3].value +
                       robot.proximity[4].value +
                       robot.proximity[5].value +
