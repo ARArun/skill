@@ -11,11 +11,12 @@ end
 
 function step()
     --colors
-    if (bat_cur/bat_total) > 0.25 then
+--[[    if (bat_cur/bat_total) > 0.25 then
         robot.leds.set_all_colors(0,0,255)
     else
         robot.leds.set_all_colors(255,0,0)
-    end
+    end]]--
+    robot.leds.set_all_colors(0,0,255)
     if state ~= prev_state then
         log(self_addr,"=",state)
     end
@@ -53,7 +54,7 @@ end
 -----------------------------function search()----------------------------------
 --------------------------------------------------------------------------------
 function search()
-    bat_cur = bat_cur - 10
+    --bat_cur = bat_cur - 10
     es = es + 10
     sensingLeft =     robot.proximity[3].value +
                       robot.proximity[4].value +
@@ -90,7 +91,7 @@ end
     end
 
 end--]]
---------------------------------------------------------------------------------
+--[[--------------------------------------------------------------------------------
 -----------------------------function charge()----------------------------------
 --------------------------------------------------------------------------------
 function to_charge()
@@ -101,3 +102,9 @@ function to_charge()
     end
 end
 --------------------------------------------------------------------------------
+]]--
+
+----------------------------function decide()-----------------------------------
+function decide()
+    robot.wheels.set_velocity(0,0)
+end

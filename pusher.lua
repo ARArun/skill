@@ -10,11 +10,12 @@ function init()
 end
 --------------------------------------------------------------------------------
 function step()
-    if (bat_cur/bat_total) > 0.25 then
+--[[    if (bat_cur/bat_total) > 0.25 then
         robot.leds.set_all_colors(255,0,255)
     else
         robot.leds.set_all_colors(255,0,0)
-    end
+    end]]
+    robot.leds.set_all_colors(255,0,255)
 
 end
 --------------------------------------------------------------------------------
