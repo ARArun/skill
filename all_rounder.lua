@@ -10,13 +10,20 @@ function init()
 end
 --------------------------------------------------------------------------------
 function step()
-    if (bat_cur/bat_total) > 0.25 then
+--[[    if (bat_cur/bat_total) > 0.25 then
             robot.leds.set_all_colors(255,255,0)
     else
         robot.leds.set_all_colors(255,0,0)
+    end]]--
+    robot.leds.set_all_colors(255,255,0)
+    if state ~= prev_state then
+        log(self_addr,"=",state)
     end
+    prev_state = state
     if state == "search" then
         search()
+    elseif state == "decide" then
+        decide()
     end
 end
 --------------------------------------------------------------------------------
@@ -39,9 +46,9 @@ function addr(s)
     id = math.fmod(id,251) + 1
     return id
 end
---------------------------------------------------------------------------------
+-----------------------------function search()----------------------------------
 function search()
-    bat_cur = bat_cur - 10
+    --bat_cur = bat_cur - 10
     es = es + 10
     sensingLeft =     robot.proximity[3].value +
                       robot.proximity[4].value +
@@ -66,5 +73,33 @@ function search()
     else
           robot.wheels.set_velocity(10,10)
     end
+    if #robot.colored_blob_omnidirectional_camera ~= 0  then
+        for i = 1,#robot.colored_blob_omnidirectional_camera do
+            if (robot.colored_blob_omnidirectional_camera[i].color.red == 165 and
+                robot.colored_blob_omnidirectional_camera[i].color.green == 42 and
+                robot.colored_blob_omnidirectional_camera[i].color.blue == 42) then
+                    state = "decide"
+                    object = "large_disc"
+            elseif(robot.colored_blob_omnidirectional_camera[i].color.red == 255 and
+                robot.colored_blob_omnidirectional_camera[i].color.green == 255 and
+                robot.colored_blob_omnidirectional_camera[i].color.blue == 255) then
+                    state = "decide"
+                    object = " small_disc"
+            elseif(robot.colored_blob_omnidirectional_camera[i].color.red == 160 and
+                robot.colored_blob_omnidirectional_camera[i].color.green == 32 and
+                robot.colored_blob_omnidirectional_camera[i].color.blue == 240) then
+                    state = "decide"
+                    object = "small_box"
+            elseif(robot.colored_blob_omnidirectional_camera[i].color.red == 255 and
+                robot.colored_blob_omnidirectional_camera[i].color.green == 140 and
+                robot.colored_blob_omnidirectional_camera[i].color.blue == 0) then
+                state = "decide"
+                object = "large_disc"
+            end
+        end
+    end
 end
---------------------------------------------------------------------------------
+----------------------------function decide()-----------------------------------
+function decide()
+    robot.wheels.set_velocity(-10,10)
+end
