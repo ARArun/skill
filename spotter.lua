@@ -82,7 +82,7 @@ function search()
     if #robot.colored_blob_omnidirectional_camera ~= 0  then
         log(1)
         for i = 1,#robot.colored_blob_omnidirectional_camera do
-            if ((robot.colored_blob_omnidirectional_camera[i].color.red == 165 and
+            if (robot.colored_blob_omnidirectional_camera[i].color.red == 165 and
                 robot.colored_blob_omnidirectional_camera[i].color.green == 42 and
                 robot.colored_blob_omnidirectional_camera[i].color.blue == 42) then
                     state = "decide"
@@ -99,7 +99,7 @@ function search()
                     object = "small_box"
             elseif(robot.colored_blob_omnidirectional_camera[i].color.red == 255 and
                 robot.colored_blob_omnidirectional_camera[i].color.green == 140 and
-                robot.colored_blob_omnidirectional_camera[i].color.blue == 0)) then
+                robot.colored_blob_omnidirectional_camera[i].color.blue == 0) then
                 state = "decide"
                 object = "large_disc"
             end
