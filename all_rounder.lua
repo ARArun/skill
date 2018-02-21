@@ -23,7 +23,7 @@ end
 function reset()
 end
 function destroy()
-    log('Energy spent by gripper ',id,' = ',es)
+    log('Energy spent by ',robot.id,' / ',id,' = ',es,'\n')
 end
 --------------------------------------------------------------------------------
 ----------------------------------addr fn---------------------------------------

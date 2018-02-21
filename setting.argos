@@ -507,7 +507,7 @@
           <position method="uniform" min="-4.5,-1.25,0" max="3,1.25,0" />
           <orientation method="uniform" min="0,0,0" max="0,0,0" />
           <entity quantity="1" max_trials="100">
-            <foot-bot id="spotter" rab_range="15" rab_data_size="3">
+            <foot-bot id="spotter" rab_range="15" rab_data_size="4">
               <controller config="type_1" />
             </foot-bot>
           </entity>
@@ -518,7 +518,7 @@
           <position method="uniform" min="-4.5,-1.25,0" max="3,1.25,0" />
           <orientation method="uniform" min="0,0,0" max="0,0,0" />
           <entity quantity="1" max_trials="100">
-            <foot-bot id="worker" rab_range="15" rab_data_size="3">
+            <foot-bot id="worker" rab_range="15" rab_data_size="4">
               <controller config="type_2" />
             </foot-bot>
           </entity>
@@ -529,7 +529,7 @@
           <position method="uniform" min="-4.5,-1.25,0" max="3,1.25,0" />
           <orientation method="uniform" min="0,0,0" max="0,0,0" />
           <entity quantity="1" max_trials="100">
-            <foot-bot id="precision_worker" rab_range="15" rab_data_size="3">
+            <foot-bot id="precision_worker" rab_range="15" rab_data_size="4">
               <controller config="type_3" />
             </foot-bot>
           </entity>
@@ -540,7 +540,7 @@
           <position method="uniform" min="-4.5,-1.25,0" max="3,1.25,0" />
           <orientation method="uniform" min="0,0,0" max="0,0,0" />
           <entity quantity="1" max_trials="100">
-            <foot-bot id="all_rounder" rab_range="15" rab_data_size="3">
+            <foot-bot id="all_rounder" rab_range="15" rab_data_size="4">
               <controller config="type_4" />
             </foot-bot>
           </entity>

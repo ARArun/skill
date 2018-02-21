@@ -23,8 +23,8 @@ function step()
 
     if state == "search" then
         search()
-    elseif state == "to_charge" then
-        to_charge()
+    elseif state == "decide" then
+        decide()
     end
 
 end
@@ -33,7 +33,7 @@ end
 function reset()
 end
 function destroy()
-    log('Energy spent by gripper ',id,' = ',es)
+    log('Energy spent by ',robot.id,' / ',id,' = ',es,'\n')
 end
 --------------------------------------------------------------------------------
 ----------------------------------addr fn---------------------------------------
