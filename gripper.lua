@@ -1,5 +1,9 @@
 bat_total = 10000
 bat_cur = 10000
+my_periferrals = "1110"
+--my_periferrals
+-- Communication, turret, pusher, camera
+-- are the periferrals each digit represents
 es = 0
 --------------------------------------------------------------------------------
 function init()

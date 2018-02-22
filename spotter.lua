@@ -1,5 +1,9 @@
 bat_total = 10000
 bat_cur = 10000
+my_periferrals = "1001"
+--my_periferrals
+-- Communication, turret, pusher, camera
+-- are the periferrals each digit represents
 es = 0
 function init()
     self_addr = addr(robot.id)
@@ -105,9 +109,7 @@ function search()
         end
     end
 end
---------------------------------------------------------------------------------
 --------------------------------to charge()-------------------------------------
---------------------------------------------------------------------------------
 --[[function to_charge()
     if robot.positioning.position.x < 0 then -- the location we must go
 
@@ -128,8 +130,15 @@ function to_charge()
 end
 --------------------------------------------------------------------------------
 ]]--
-
+----------------------------function message()----------------------------------
+function compose(to_addr, required_perriferrals, message)
+    skill_tag = tonumber(my_periferrals..required_perriferrals,2)
+    comp_msg = {self_addr,to_addr,skill_tag,message}
+    return comp_msg
+end
+--------------------------------------------------------------------------------
 ----------------------------function decide()-----------------------------------
 function decide()
-    robot.wheels.set_velocity(10,-10)
+    if object == "small_disc" then
+        robot.range_and_bearing.set_data()
 end

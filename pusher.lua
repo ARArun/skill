@@ -1,6 +1,9 @@
 bat_total = 10000
 bat_cur = 10000
-es = 0
+my_periferrals = "1010"
+--my_periferrals
+-- Communication, turret, pusher, camera
+-- are the periferrals each digit representses = 0
 --------------------------------------------------------------------------------
 function init()
     self_addr = addr(robot.id)

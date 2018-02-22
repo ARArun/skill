@@ -10,4 +10,6 @@ function toBits(num,bits)
 end
 
 ans = toBits(11,8)
+str_ans =string(ans)
+print(str_ans)
 print(ans[1],ans[2],ans[3],ans[4],ans[5],ans[6],ans[7],ans[8])
