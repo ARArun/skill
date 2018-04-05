@@ -1,6 +1,7 @@
 bat_total = 10000
 bat_cur = 10000
 es = 0
+object = "none"
 function init()
     self_addr = addr(robot.id)
     log(robot.id," = ",id)
@@ -24,6 +25,8 @@ function step()
 
     if state == "search" then
         search()
+    elseif state == "approach" then
+        approach()
     elseif state == "decide" then
         decide()
     end
@@ -85,23 +88,23 @@ function search()
             if (robot.colored_blob_omnidirectional_camera[i].color.red == 165 and
                 robot.colored_blob_omnidirectional_camera[i].color.green == 42 and
                 robot.colored_blob_omnidirectional_camera[i].color.blue == 42) then
-                    state = "decide"
+                    state = "choose"
                     object = "large_disc"
             elseif(robot.colored_blob_omnidirectional_camera[i].color.red == 255 and
                 robot.colored_blob_omnidirectional_camera[i].color.green == 255 and
                 robot.colored_blob_omnidirectional_camera[i].color.blue == 255) then
-                    state = "decide"
+                    state = "choose"
                     object = " small_disc"
             elseif(robot.colored_blob_omnidirectional_camera[i].color.red == 160 and
                 robot.colored_blob_omnidirectional_camera[i].color.green == 32 and
                 robot.colored_blob_omnidirectional_camera[i].color.blue == 240) then
-                    state = "decide"
+                    state = "choose"
                     object = "small_box"
             elseif(robot.colored_blob_omnidirectional_camera[i].color.red == 255 and
                 robot.colored_blob_omnidirectional_camera[i].color.green == 140 and
                 robot.colored_blob_omnidirectional_camera[i].color.blue == 0) then
-                state = "decide"
-                object = "large_disc"
+                    state = "choose"
+                    object = "large_disc"
             end
         end
     end
@@ -117,7 +120,7 @@ end
     end
 
 end--]]
---[[--------------------------------------------------------------------------------
+--[[----------------------------------------------------------------------------
 -----------------------------function charge()----------------------------------
 --------------------------------------------------------------------------------
 function to_charge()
@@ -129,6 +132,91 @@ function to_charge()
 end
 --------------------------------------------------------------------------------
 ]]--
+----------------------------function choose()-----------------------------------
+function choose()
+  if #robot.colored_blob_omnidirectional_camera == 0 then
+      state = "search"
+  else
+      robot.wheels.set_velocity(0,0)
+      closest = robot.colored_blob_omnidirectional_camera[1]
+      dist = robot.colored_blob_omnidirectional_camera[1].distance
+      ang =  robot.colored_blob_omnidirectional_camera[1].angle
+      for i = 1, #robot.colored_blob_omnidirectional_camera do
+
+          if (robot.colored_blob_omnidirectional_camera[i].color.red == 165 and
+              robot.colored_blob_omnidirectional_camera[i].color.green == 42 and
+              robot.colored_blob_omnidirectional_camera[i].color.blue == 42) or
+              (robot.colored_blob_omnidirectional_camera[i].color.red == 255 and
+               robot.colored_blob_omnidirectional_camera[i].color.green == 255 and
+               robot.colored_blob_omnidirectional_camera[i].color.blue == 255) or
+               (robot.colored_blob_omnidirectional_camera[i].color.red == 160 and
+                robot.colored_blob_omnidirectional_camera[i].color.green == 32 and
+                robot.colored_blob_omnidirectional_camera[i].color.blue == 240) or
+                (robot.colored_blob_omnidirectional_camera[i].color.red == 255 and
+                robot.colored_blob_omnidirectional_camera[i].color.green == 140 and
+                robot.colored_blob_omnidirectional_camera[i].color.blue == 0)then
+              closest = robot.colored_blob_omnidirectional_camera[i]
+              dist = closest.distance
+              ang = closest.angle
+
+          end
+
+      end
+      if ang > 0.1 then
+          robot.wheels.set_velocity(-1,1)
+      elseif ang < -0.1 then
+          robot.wheels.set_velocity(1,-1)
+      elseif ang >= -0.1 and ang <= 0.1 then
+          state = "approach"
+      end
+  end
+end
+---------------------------function approach()----------------------------------
+function approach()
+    if #robot.colored_blob_omnidirectional_camera > 0 then
+        x = 0
+        for i = 1, 24 do --some modification must be done here as we need not check
+                         --all proximity sensors then ones located in front shall do
+            if x < robot.proximity[i].value then
+                x = robot.proximity[i].value
+            end
+        end
+    -------trying to keep the orientation while approaching the obstacle------------
+        dist = robot.colored_blob_omnidirectional_camera[1].distance
+        ang =  robot.colored_blob_omnidirectional_camera[1].angle
+
+        for i = 1, #robot.colored_blob_omnidirectional_camera do
+
+            if dist > robot.colored_blob_omnidirectional_camera[i].distance and
+                (robot.colored_blob_omnidirectional_camera[i].color.red == 255 or
+                robot.colored_blob_omnidirectional_camera[i].color.blue == 255) then
+
+                dist = robot.colored_blob_omnidirectional_camera[i].distance
+                ang = robot.colored_blob_omnidirectional_camera[i].angle
+
+            end
+        end
+        if ang > 0 then
+            robot.wheels.set_velocity(5,6)
+        end
+        if ang < 0 then
+            robot.wheels.set_velocity(6,5)
+        end
+        if ang == 0 then
+            robot.wheels.set_velocity(5,5)
+        end
+    -------------trying to slow down when reaching near the obstacle----------------
+        if x >= 0.5 then
+            robot.wheels.set_velocity((1 - x) * 10, (1 - x) * 10)
+        end
+        if x >= 0.9 then
+            robot.wheels.set_velocity(0,0)
+            state = "decide"
+        end
+    else
+        state = "search"
+    end
+end
 
 ----------------------------function decide()-----------------------------------
 function decide()
