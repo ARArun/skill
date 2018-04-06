@@ -1,5 +1,6 @@
 bat_total = 10000
 bat_cur = 10000
+decide_check = 0
 es = 0
 object = "none"
 function init()
@@ -105,7 +106,7 @@ function search()
                 robot.colored_blob_omnidirectional_camera[i].color.green == 140 and
                 robot.colored_blob_omnidirectional_camera[i].color.blue == 0) then
                     state = "choose"
-                    object = "large_disc"
+                    object = "large_box"
             end
         end
     end
@@ -137,9 +138,7 @@ end
 function choose()
   if #robot.colored_blob_omnidirectional_camera == 0 then
       state = "search"
-      log(1)
   else
-      log(2)
       robot.wheels.set_velocity(0,0)
       closest = robot.colored_blob_omnidirectional_camera[1]
       dist = robot.colored_blob_omnidirectional_camera[1].distance
@@ -224,4 +223,16 @@ end
 ----------------------------function decide()-----------------------------------
 function decide()
     robot.wheels.set_velocity(10,-10)
+    if decide_check == 0 then
+      if object == "large_disc" then
+        log("detected 'large_disc'")
+      elseif object == "small_disc" then
+        log("detected 'small_disc'")
+      elseif object == "large_box" then
+        log("detected 'large_box'")
+      elseif object == "small_box" then
+        log("detected 'small_box'")
+      end
+      decide_check = decide_check + 1
+    end
 end
