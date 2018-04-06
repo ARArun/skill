@@ -25,6 +25,8 @@ function step()
 
     if state == "search" then
         search()
+    elseif state == "choose" then
+        choose()
     elseif state == "approach" then
         approach()
     elseif state == "decide" then
@@ -83,7 +85,6 @@ function search()
           robot.wheels.set_velocity(10,10)
     end
     if #robot.colored_blob_omnidirectional_camera ~= 0  then
-        log(1)
         for i = 1,#robot.colored_blob_omnidirectional_camera do
             if (robot.colored_blob_omnidirectional_camera[i].color.red == 165 and
                 robot.colored_blob_omnidirectional_camera[i].color.green == 42 and
@@ -136,7 +137,9 @@ end
 function choose()
   if #robot.colored_blob_omnidirectional_camera == 0 then
       state = "search"
+      log(1)
   else
+      log(2)
       robot.wheels.set_velocity(0,0)
       closest = robot.colored_blob_omnidirectional_camera[1]
       dist = robot.colored_blob_omnidirectional_camera[1].distance
